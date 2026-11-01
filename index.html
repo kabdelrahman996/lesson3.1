@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>كيف يعمل تطبيق الويب؟ — جرّب بنفسك</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main class="wrap">
+    <header>
+      <span class="tag">الوحدة الثالثة · الدرس الأول</span>
+      <h1>كيف يعمل تطبيق الويب؟ جرّب بنفسك 🧪</h1>
+      <p class="mu">اقرأ، جرّب المحاكاة، ثم أجب عن الأسئلة. كل إجابة معها تعليق يشرح لماذا هي صحيحة أو خاطئة.</p>
+    </header>
+
+    <section class="sec">
+      <h2>🛒 موقف من يومك</h2>
+      <p>فتحتَ متجرًا إلكترونيًا، وكتبتَ «سماعة»، وضغطتَ بحث… وبعد ثانية ظهرت النتائج. <b>إيه اللي حصل ورا الشاشة؟</b> الإجابة: ثلاث طبقات تتعاون معًا.</p>
+    </section>
+
+    <section class="sec">
+      <h2>ثلاث طبقات تتعاون</h2>
+      <p class="mu">تخيّل مطعمًا: الصالة، والمطبخ، والمخزن.</p>
+      <div class="g3 g4" id="layers"></div>
+    </section>
+
+    <section class="sec" id="sim">
+      <h2>🧪 المحاكاة: شاهد رحلة الطلب</h2>
+      <p>اختر سيناريو، اكتب في صفحة الموقع على الشاشة واضغط الزر، ثم تابع الطلب وهو يتحرك بين الطبقات. اضغط «الخطوة التالية» لتتقدم خطوة بخطوة.</p>
+
+      <!-- شريط السيناريوهات (الأمثلة) -->
+      <div class="sim-scenarios">
+        <span class="sim-label">اختر السيناريو (المثال):</span>
+        <div class="tabs" id="tabs"></div>
+      </div>
+
+      <!-- شريط أزرار التحكم في المحاكاة منفصل تماماً -->
+      <div class="sim-controls">
+        <span class="sim-label">التحكم في المحاكاة:</span>
+        <div class="sim-actions">
+          <button class="b" id="stp">الخطوة التالية ◀</button>
+          <button class="b gh" id="au">▶ تلقائي</button>
+          <button class="b gh" id="rs">↺ إعادة</button>
+        </div>
+      </div>
+
+      <div class="net">
+        <div class="lane">
+          <div class="pkt" id="pk"></div>
+        </div>
+        <div class="sts">
+          <div class="stn" data-l="f">
+            <div class="th">
+              <span>🖥️ الواجهة الأمامية <small class="mu">(المتصفح)</small></span>
+              <button class="b gh tg" data-l="f">تعطيل</button>
+            </div>
+            <div class="mon">
+              <div class="url">🔒 https://shop.example.com</div>
+              <div id="scr"></div>
+            </div>
+            <div class="stand"></div>
+          </div>
+
+          <div class="stn" data-l="b">
+            <div class="th">
+              <span>⚙️ الواجهة الخلفية <small class="mu">(الخادم)</small></span>
+              <button class="b gh tg" data-l="b">تعطيل</button>
+            </div>
+            <b class="mu">القواعد والتحقق:</b>
+            <ul id="ck"></ul>
+            <b class="mu">الاستعلام الذي ترسله:</b>
+            <code id="sq"></code>
+          </div>
+
+          <div class="stn" data-l="d">
+            <div class="th">
+              <span>🗄️ قاعدة البيانات</span>
+              <button class="b gh tg" data-l="d">تعطيل</button>
+            </div>
+            <table id="dbt"></table>
+          </div>
+        </div>
+
+        <div class="cap" id="cap"></div>
+      </div>
+
+      <h3>🎯 تحديات: جرّب ثم افتح الإجابة</h3>
+      <details>
+        <summary>1. عطّل «قاعدة البيانات» ثم جرّب سيناريو البحث. ماذا يرى المستخدم؟ وعند أي خطوة توقفت الرحلة؟</summary>
+        <p>تتوقف عند الخطوة 4: الخلفية تحاول سؤال قاعدة البيانات فلا تجد بيانات، فيظهر للمستخدم «تعذّر تحميل البيانات».</p>
+      </details>
+      <details>
+        <summary>2. عطّل «الواجهة الخلفية» وجرّب تسجيل الدخول. هل وصل الطلب إلى الخادم؟ ولماذا لا ينجح؟</summary>
+        <p>الطلب يخرج من المتصفح ويصل، لكن لا أحد يعالجه ولا يطبّق القواعد؛ تتوقف الرحلة عند الخطوة 2 ويظهر خطأ في الخادم.</p>
+      </details>
+      <details>
+        <summary>3. في تسجيل الدخول جرّب اسمًا غير موجود (مثل zed). ما رمز الرد؟ ومن قرر الرفض؟</summary>
+        <p>الرد 401 Unauthorized. قاعدة البيانات أخبرت الخلفية أنه لا يوجد مستخدم مطابق، والخلفية هي التي قرّرت الرفض.</p>
+      </details>
+      <details>
+        <summary>4. في حجز الموعد جرّب 10:00 ثم 10:30. ما الفرق؟</summary>
+        <p>الوقت 10:00 محجوز مسبقًا فيأتي الرد 409 Conflict، أما 10:30 فمتاح فيُنشأ الحجز ويأتي الرد 201 Created.</p>
+      </details>
+      <details>
+        <summary>5. عطّل «الواجهة الأمامية» وجرّب أي سيناريو. ما الذي تغيّر؟</summary>
+        <p>لا يحدث شيء للمستخدم: الشاشة لا تستجيب ولا يخرج أي طلب أصلًا، فلا تتحرك الرحلة.</p>
+      </details>
+    </section>
+
+    <section class="sec">
+      <h2>✍️ تدريب 1: أي طبقة مسؤولة؟</h2>
+      <div id="q1"></div>
+    </section>
+
+    <section class="sec">
+      <h2>🧠 تدريب 2: اختبر فهمك</h2>
+      <div id="q2"></div>
+    </section>
+
+    <section class="sec">
+      <h2>✅ الخلاصة</h2>
+      <p><b>الواجهة الأمامية</b> تعرض وتجمع، <b>الواجهة الخلفية</b> تقرر وتعالج، و<b>قاعدة البيانات</b> تخزن وتسترجع. تبدأ الرحلة بطلب من المتصفح، وتعود باستجابة تظهر على الشاشة.</p>
+      <p class="mu">هذا نموذج تعليمي مبسط؛ البنية الفعلية قد تختلف من تطبيق لآخر.</p>
+    </section>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
