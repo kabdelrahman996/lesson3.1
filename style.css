@@ -625,9 +625,10 @@ body {
 }
 
 .wrap {
-  max-width: 1120px;
+  width: 92%;
+  max-width: 1800px;
   margin: 0 auto;
-  padding: 28px 20px 70px;
+  padding: 28px 10px 70px;
   display: flex;
   flex-direction: column;
   gap: 26px;
@@ -1079,7 +1080,7 @@ h2 {
 }
 
 p {
-  max-width: 72ch;
+  max-width: 100%;
 }
 
 .mu {
@@ -1087,7 +1088,8 @@ p {
 }
 
 .wrap {
-  max-width: 1080px;
+  width: 92%;
+  max-width: 1800px;
   gap: 22px;
 }
 
